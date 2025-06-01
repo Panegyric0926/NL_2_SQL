@@ -1,0 +1,8 @@
+# LLM
+ollama run qwen3:8b
+
+# Embedding
+uvicorn embedding_app:app --host 0.0.0.0 --port 8000
+
+# Database
+uvicorn database_app:app --host 0.0.0.0 --port 9000

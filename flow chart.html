@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Natural Language Query Flowchart (Uniform Rectangles)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8fa;
+      margin: 0;
+      padding: 20px;
+    }
+    .flowchart-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 32px 48px 32px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.09);
+      min-height: 85vh;
+    }
+    .flowchart {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      width: 100%;
+    }
+    .node, .judge-node, .stop-node, .return-node {
+      width: 270px;
+      min-height: 54px;
+      margin-bottom: 28px;
+      font-size: 1.07em;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: background 0.2s;
+      box-sizing: border-box;
+      border-width: 2px;
+      border-style: solid;
+    }
+    .node {
+      background: #e3f2fd;
+      color: #0d47a1;
+      font-weight: bold;
+      border-color: #e3f2fd;
+    }
+    .judge-node {
+      background: #fff9c4;
+      color: #7a6a00;
+      font-weight: bold;
+      border-color: #fff9c4;
+    }
+    .stop-node {
+      background: #ffebee;
+      color: #b71c1c;
+      font-weight: bold;
+      border-color: #ffebee;
+    }
+    .return-node {
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-weight: bold;
+      border-color: #e8f5e9;
+    }
+    .vertical-line {
+      height: 28px;
+      width: 3px;
+      margin: 0 auto -2px auto;
+      display: block;
+      z-index: 1;
+      background: #111;
+    }
+    .branch-group {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+      margin-bottom: 0;
+      margin-top: -16px;
+      gap: 48px;
+      position: relative;
+      z-index: 1;
+    }
+    .branch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      width: 270px;
+      margin-bottom: 0;
+    }
+    .branch-label {
+      font-size: 1em;
+      background: #fffde7;
+      color: #b59f00;
+      border: 1.5px solid #ffe082;
+      padding: 3px 18px;
+      border-radius: 16px;
+      margin-bottom: 8px;
+      margin-top: 2px;
+      z-index: 2;
+    }
+    .horizontal-line {
+      display: none !important;
+    }
+    @media (max-width: 900px) {
+      .flowchart-container { max-width: 98vw; padding: 8vw 2vw; }
+      .branch-group { gap: 18px; }
+      .node, .judge-node, .stop-node, .return-node { width: 95vw; max-width: 99%; min-width: 0; }
+      .branch { width: 98vw; max-width: 99%; }
+    }
+    @media (max-width: 650px) {
+      .flowchart-container { padding: 4vw 1vw; }
+      .flowchart { width: 100%; }
+      .node, .judge-node, .stop-node, .return-node { font-size: 0.97em; width: 98%; min-width: 0; min-height: 38px; padding: 9px 6px; }
+      .branch { width: 99%; }
+      .branch-label { font-size: 0.98em; padding: 2px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="flowchart-container">
+    <h2 style="text-align:center;">Natural Language Query Flowchart</h2>
+    <div class="flowchart">
+      <div class="node">
+        1. Convert Natural Language to Structured Language
+      </div>
+      <div class="vertical-line"></div>
+      <div class="judge-node">
+        Is Query Relevant?
+      </div>
+      <div class="branch-group">
+        <div class="branch" style="align-items:center;">
+          <div class="branch-label">No</div>
+          <div class="vertical-line"></div>
+          <div class="stop-node">Stop</div>
+        </div>
+        <div class="branch" style="align-items:center;">
+          <div class="branch-label">Yes</div>
+          <div class="vertical-line"></div>
+          <div class="node">
+            2. Use Structured Language to Query Database
+          </div>
+          <div class="vertical-line"></div>
+          <div class="judge-node">
+            Is There a Match in Database?
+          </div>
+          <div class="branch-group">
+            <div class="branch" style="align-items:center;">
+              <div class="branch-label">Yes</div>
+              <div class="vertical-line"></div>
+              <div class="return-node">
+                Return Answer in Database
+              </div>
+            </div>
+            <div class="branch" style="align-items:center;">
+              <div class="branch-label">No</div>
+              <div class="vertical-line"></div>
+              <div class="node">
+                3. Convert Structured Language into Real SQL Code
+              </div>
+              <div class="vertical-line"></div>
+              <div class="node">
+                4. Check for Errors in SQL Code
+              </div>
+              <div class="vertical-line"></div>
+              <div class="node">
+                5. Update Database with New Result
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
